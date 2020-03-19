@@ -1,6 +1,14 @@
 services:
   BookStore.GetBooksController:
     class: ../../controllers/GetBooksController
+    arguments: ["@BookStore.BooksFinder"]
+
+  BookStore.BooksFinder:
+    class: ../../../../src/Books/Application/BooksFinder
+    arguments: ["@BookStore.BookRepository"]
+
+  BookStore.GetBookController:
+    class: ../../controllers/GetBookController
     arguments: ["@BookStore.BookFinder"]
 
   BookStore.BookFinder:

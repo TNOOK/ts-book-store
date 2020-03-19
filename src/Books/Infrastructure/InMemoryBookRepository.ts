@@ -9,7 +9,7 @@ export class InMemoryBookRepository implements BookRepository {
     private books: Book[];
     constructor() {
         this.books = [
-            new Book(new BookId(v4()), BookName.fromString('La biblia'), new BookLength(200)),
+            new Book(new BookId('12312441241'), BookName.fromString('La biblia'), new BookLength(200)),
             new Book(new BookId(v4()), BookName.fromString('El Quijote'), new BookLength(230)),
             new Book(new BookId(v4()), BookName.fromString('Las Reliquias de la muerte'), new BookLength(300)),
             new Book(new BookId(v4()), BookName.fromString('Node for dummies'), new BookLength(800))
@@ -17,9 +17,9 @@ export class InMemoryBookRepository implements BookRepository {
     }
 
     find(id: BookId): Book {
-        const book =  this.books.find(book => book.id === id);
+        const book:Book | undefined =  this.books.find(book => book.id.uuid === id.uuid);
         if (typeof book === 'undefined') {
-            new Error('There is not any book with that id');
+            throw new Error('There is not any book with that id');
         }
         // @ts-ignore
         return book;

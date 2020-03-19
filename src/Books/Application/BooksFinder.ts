@@ -1,12 +1,11 @@
 import {Book} from "../Domain/Book";
 import {BookRepository} from "../Domain/BookRepository";
-import {BookId} from "../Domain/BookId";
 
-export class BookFinder {
+export class BooksFinder {
     constructor(private repository: BookRepository) {}
 
-    async run(id: BookId): Promise<Book> {
-        return this.repository.find(id);
+    async run(): Promise<Book[]> {
+        return this.repository.findAll();
     }
 
 }

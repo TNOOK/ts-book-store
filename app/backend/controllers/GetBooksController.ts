@@ -1,18 +1,18 @@
 import {json, Request, Response} from 'express';
 import Controller from "./Controller";
-import {BookFinder} from "../../../src/Books/Application/BookFinder";
+import {BookFinder} from "../../../src/Books/Application/BooksFinder";
 
 export default class GetBooksController implements Controller {
     constructor(private bookFinder: BookFinder) {}
 
     async run(req: Request, res: Response): Promise<void> {
-        let books;
+        let book;
 
         try {
-            books = await this.bookFinder.run();
+            book = await this.bookFinder.run();
         } catch (e) {
             console.log(e);
         }
-        res.status(200).json(books);
+        res.status(200).json(book);
     }
 }
