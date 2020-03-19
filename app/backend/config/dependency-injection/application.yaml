@@ -1,0 +1,12 @@
+services:
+  BookStore.GetBooksController:
+    class: ../../controllers/GetBooksController
+    arguments: ["@BookStore.BookFinder"]
+
+  BookStore.BookFinder:
+    class: ../../../../src/Books/Application/BookFinder
+    arguments: ["@BookStore.BookRepository"]
+
+  BookStore.BookRepository:
+    class: ../../../../src/Books/Infrastructure/InMemoryBookRepository
+    arguments: []
