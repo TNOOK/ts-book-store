@@ -4,5 +4,5 @@ import container from "../dependency-injection";
 
 export const register = (app: Express) => {
   const controller: GetBooksController = container.get('BookStore.GetBooksController');
-  app.get('/books/:id', controller.run.bind(controller));
+  app.get('/books/', controller.run.bind(controller));
 };
