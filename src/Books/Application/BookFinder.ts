@@ -7,10 +7,8 @@ import {BookLength} from "../Domain/BookLength";
 export class BookFinder {
     constructor(private repository: BookRepository) {}
 
-    async run(): Promise<void> {
-
-        const books = await this.repository.findAll();
-
+    async run(): Promise<Book[]> {
+        return this.repository.findAll();
     }
 
 }

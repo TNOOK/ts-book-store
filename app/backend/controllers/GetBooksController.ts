@@ -13,7 +13,6 @@ export default class StatusGetController implements Controller {
         } catch (e) {
             console.log(e);
         }
-
         res.status(200).json(books);
     }
 }
