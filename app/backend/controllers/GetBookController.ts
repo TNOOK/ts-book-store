@@ -7,13 +7,13 @@ export default class GetBookController implements Controller {
     constructor(private bookFinder: BookFinder) {}
 
     async run(req: Request, res: Response): Promise<void> {
-        let books,
+        let book,
             id:BookId = new BookId(req.params.id);
         try {
-            books = await this.bookFinder.run(id);
+            book = await this.bookFinder.run(id);
         } catch (e) {
             console.log(e);
         }
-        res.status(200).json(books);
+        res.status(200).json(book);
     }
 }
