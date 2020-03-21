@@ -10,7 +10,7 @@ export class BooksFinder {
 
         let res: GetBookControllerResponse[] = [];
 
-        books.forEach(function (book: Book) {
+        books.forEach((book: Book) => {
             res.push(new GetBookControllerResponse(
                 book.id.uuid,
                 book.name.value,
