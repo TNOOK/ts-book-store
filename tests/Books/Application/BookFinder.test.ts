@@ -15,7 +15,7 @@ describe('Book Finder', () => {
 
         const findBook = new BookFinder(repository);
 
-        const id = new BookId('some-uuid');
+        const id = new BookId('4f608969-ec4c-4e66-bf70-3a98fe7d7ca4');
         const name = BookName.fromString('some-name');
         const length = new BookLength(15);
 
