@@ -12,7 +12,7 @@ export class BooksFinder {
 
         books.forEach((book: Book) => {
             res.push(new GetBookControllerResponse(
-                book.id.uuid,
+                book.id.toString(),
                 book.name.value,
                 book.length.value))
         });
