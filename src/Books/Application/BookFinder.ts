@@ -9,7 +9,7 @@ export class BookFinder {
     async run(id: BookId): Promise<GetBookControllerResponse> {
         const book = this.repository.find(id);
         return new GetBookControllerResponse(
-            book.id.uuid,
+            book.id.toString(),
             book.name.value,
             book.length.value
         );
