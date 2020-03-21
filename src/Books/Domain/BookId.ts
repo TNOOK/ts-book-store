@@ -1,11 +1,7 @@
-export class BookId {
-    private readonly _uuid: string;
+import {v4 as uuid} from "uuid";
+import validate from "uuid-validate";
+import {Uuid} from "../../Shared/Domain/ValueObject/Uuid";
 
-    constructor(uuid: string) {
-        this._uuid = uuid;
-    }
+export class BookId extends Uuid{
 
-    get uuid(): string {
-        return this._uuid
-    }
 }
