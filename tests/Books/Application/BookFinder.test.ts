@@ -6,7 +6,7 @@ import {BookName} from "../../../src/Books/Domain/BookName";
 import {BookLength} from "../../../src/Books/Domain/BookLength";
 
 describe('Book Finder', () => {
-    it('should create a valid course', async () => {
+    it('should return a book', async () => {
         const mockId = new BookId('4f608969-ec4c-4e66-bf70-3a98fe7d7ca4');
         const jestFind = jest.fn();
         const find =  (bookId: BookId) => {
