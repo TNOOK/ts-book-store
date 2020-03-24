@@ -28,4 +28,9 @@ export class InMemoryBookRepository implements BookRepository {
     findAll(): Book[] {
         return this.books;
     }
+
+    create(book: Book): void {
+        this.books.push(book);
+        console.log('New book added', book);
+    }
 }
