@@ -17,7 +17,8 @@ describe('Books Finder', () => {
         };
         const repository: BookRepository = {
             find: jest.fn(),
-            findAll
+            findAll,
+            save: jest.fn(),
         };
         const findBooks = new BooksFinder(repository);
         await findBooks.run();
