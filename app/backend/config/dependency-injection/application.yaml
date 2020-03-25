@@ -15,6 +15,14 @@ services:
     class: ../../../../src/Books/Application/BookFinder
     arguments: ["@BookStore.BookRepository"]
 
+  BookStore.PostBookController:
+    class: ../../controllers/PostBookController
+    arguments: ["@BookStore.BookCreator"]
+
+  BookStore.BookCreator:
+    class: ../../../../src/Books/Application/BookCreator
+    arguments: ["@BookStore.BookRepository"]
+
   BookStore.BookRepository:
     class: ../../../../src/Books/Infrastructure/InMemoryBookRepository
     arguments: []
