@@ -29,7 +29,7 @@ export class InMemoryBookRepository implements BookRepository {
         return this.books;
     }
 
-    create(book: Book): void {
+    save(book: Book): void {
         this.books.push(book);
         console.log('New book added', book);
     }

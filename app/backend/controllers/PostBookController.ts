@@ -11,7 +11,7 @@ export default class PostBookController implements Controller {
 
     async run(req: Request, res: Response): Promise<void> {
         try {
-            await this.bookCreator.run(new Book(new BookId(req.body.id), BookName.fromString(req.body.name), new BookLength(req.body.length)));
+            await this.bookCreator.run(new BookId(req.body.id), BookName.fromString(req.body.name), new BookLength(req.body.length));
         } catch (e) {
             console.log(e);
             res.status(100).send();

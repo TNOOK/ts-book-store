@@ -13,16 +13,16 @@ describe('Book Creator', () => {
         const mockLength = new BookLength(15);
         const mockBook = new Book(mockId, mockName, mockLength);
         const jestFind = jest.fn();
-        const create =  (book: Book) => {
+        const save = (book: Book) => {
             jestFind(book);
         };
         const repository: BookRepository = {
             find: jest.fn(),
             findAll: jest.fn(),
-            create
+            save
         };
         const createBook = new BookCreator(repository);
-        await createBook.run(mockBook);
+        await createBook.run(mockId, mockName, mockLength);
         expect(jestFind).toHaveBeenCalledWith(mockBook);
     });
 });
