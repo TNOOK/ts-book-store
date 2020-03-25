@@ -1,6 +1,6 @@
 import {BookRepository} from "../../../src/Books/Domain/BookRepository";
+import {BookRespositoryMock} from "../__mocks__/repository/BookRespositoryMock";
 import {BookCreator} from "../../../src/Books/Application/BookCreator";
-import {BookFinder} from "../../../src/Books/Application/BookFinder";
 import {BookId} from "../../../src/Books/Domain/BookId";
 import {Book} from "../../../src/Books/Domain/Book";
 import {BookName} from "../../../src/Books/Domain/BookName";
@@ -12,17 +12,9 @@ describe('Book Creator', () => {
         const mockName = BookName.fromString('some-name');
         const mockLength = new BookLength(15);
         const mockBook = new Book(mockId, mockName, mockLength);
-        const jestFind = jest.fn();
-        const save = (book: Book) => {
-            jestFind(book);
-        };
-        const repository: BookRepository = {
-            find: jest.fn(),
-            findAll: jest.fn(),
-            save
-        };
+        const repository: BookRespositoryMock = new BookRespositoryMock();
         const createBook = new BookCreator(repository);
         await createBook.run(mockId, mockName, mockLength);
-        expect(jestFind).toHaveBeenCalledWith(mockBook);
+        repository.assertLastSaveExecutionWith(mockBook);
     });
 });
