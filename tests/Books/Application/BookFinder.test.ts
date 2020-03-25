@@ -19,7 +19,7 @@ describe('Book Finder', () => {
         const repository: BookRepository = {
             find,
             findAll: jest.fn(),
-            create: jest.fn()
+            save: jest.fn()
         };
         const findBook = new BookFinder(repository);
         await findBook.run(mockId);
