@@ -8,7 +8,7 @@ export class BookRespositoryMock implements BookRepository {
     private mockFind = jest.fn();
     private mockFindAll = jest.fn();
     private mockSave = jest.fn();
-    private mockBooks: Book[] = [];
+    private readonly mockBooks: Book[] = [];
 
     constructor() {
         this.mockBooks = [new Book(new BookId('f8b5cae6-444b-487f-912d-d1e791e0b48f'), BookName.fromString('La biblia'), new BookLength(200))]
