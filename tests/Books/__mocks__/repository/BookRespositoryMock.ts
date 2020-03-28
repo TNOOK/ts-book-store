@@ -8,6 +8,7 @@ export class BookRespositoryMock implements BookRepository {
     private mockFind = jest.fn();
     private mockFindAll = jest.fn();
     private mockSave = jest.fn();
+    private mockRemove = jest.fn();
     private readonly mockBooks: Book[] = [];
 
     constructor() {
@@ -28,6 +29,10 @@ export class BookRespositoryMock implements BookRepository {
         return this.mockSave(book);
     }
 
+    remove(id: BookId): void {
+        return this.mockRemove(id);
+    }
+
     assertLastFindExecutionWith(expectedId: BookId): void {
         expect(this.mockFind).toHaveBeenCalledWith(expectedId);
     }
@@ -38,5 +43,9 @@ export class BookRespositoryMock implements BookRepository {
 
     assertLastSaveExecutionWith(expectedBook: Book): void {
         expect(this.mockSave).toHaveBeenCalledWith(expectedBook);
+    }
+
+    assertLastRemoveExecutionWith(expectedId: BookId): void {
+        expect(this.mockRemove).toHaveBeenCalledWith(expectedId);
     }
 }
