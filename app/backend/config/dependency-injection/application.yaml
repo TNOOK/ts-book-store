@@ -23,6 +23,14 @@ services:
     class: ../../../../src/Books/Application/BookCreator
     arguments: ["@BookStore.BookRepository"]
 
+  BookStore.DeleteBookController:
+    class: ../../controllers/DeleteBookController
+    arguments: ["@BookStore.BookRemover"]
+
+  BookStore.BookRemover:
+    class: ../../../../src/Books/Application/BookRemover
+    arguments: ["@BookStore.BookRepository"]
+
   BookStore.BookRepository:
     class: ../../../../src/Books/Infrastructure/InMemoryBookRepository
     arguments: []
