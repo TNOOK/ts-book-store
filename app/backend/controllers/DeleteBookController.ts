@@ -13,6 +13,6 @@ export default class DeleteBookController implements Controller {
         } catch (e) {
             console.log(e);
         }
-        res.status(200).send();
+        res.status(202).send();
     }
 }
