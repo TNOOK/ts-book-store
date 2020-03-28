@@ -1,7 +1,6 @@
 import {BookRepository} from "../Domain/BookRepository";
 import {BookId} from "../Domain/BookId";
 import {Book} from "../Domain/Book";
-import {v4} from "uuid";
 import {BookName} from "../Domain/BookName";
 import {BookLength} from "../Domain/BookLength";
 
@@ -32,5 +31,15 @@ export class InMemoryBookRepository implements BookRepository {
     save(book: Book): void {
         this.books.push(book);
         console.log('New book added', book);
+    }
+
+    remove(id: BookId): void {
+        const indexToRemove: number | undefined = this.books.findIndex(book => book.id.toString() === id.toString());
+        if(indexToRemove !== -1) {
+            this.books.splice(indexToRemove, 1);
+            console.log('Removed Book');
+        } else {
+            console.log('Book to remove not found');
+        }
     }
 }
