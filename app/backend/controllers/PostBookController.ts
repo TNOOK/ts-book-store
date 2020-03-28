@@ -1,10 +1,10 @@
 import Controller from "./Controller";
-import {json, Request, Response} from 'express';
+import {Request, Response} from 'express';
 import {BookCreator} from "../../../src/Books/Application/BookCreator";
-import {Book} from "../../../src/Books/Domain/Book";
 import {BookId} from "../../../src/Books/Domain/BookId";
 import {BookName} from "../../../src/Books/Domain/BookName";
 import {BookLength} from "../../../src/Books/Domain/BookLength";
+import {ErrorInfoControllerResponse} from "../../../src/Books/Domain/ErrorInfoControllerResponse";
 
 export default class PostBookController implements Controller {
     constructor(private bookCreator: BookCreator) {}
@@ -13,11 +13,9 @@ export default class PostBookController implements Controller {
         try {
             await this.bookCreator.run(new BookId(req.body.id), BookName.fromString(req.body.name), new BookLength(req.body.length));
         } catch (e) {
-            console.log(e);
-            res.status(100).send();
+            res.status(202).json(new ErrorInfoControllerResponse(e.message));
         }
-        res.status(200).send();
-        return undefined;
+        res.status(202).send();
     }
 
 }
