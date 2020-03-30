@@ -5,6 +5,7 @@ import {BookId} from "../../../src/Books/Domain/BookId";
 import {BookName} from "../../../src/Books/Domain/BookName";
 import {BookLength} from "../../../src/Books/Domain/BookLength";
 import {ErrorInfoControllerResponse} from "../../../src/Books/Domain/ErrorInfoControllerResponse";
+import httpStatus from "http-status";
 
 export default class PostBookController implements Controller {
     constructor(private bookCreator: BookCreator) {}
@@ -13,9 +14,8 @@ export default class PostBookController implements Controller {
         try {
             await this.bookCreator.run(new BookId(req.body.id), BookName.fromString(req.body.name), new BookLength(req.body.length));
         } catch (e) {
-            res.status(202).json(new ErrorInfoControllerResponse(e.message));
+            res.status(httpStatus.BAD_REQUEST).json(new ErrorInfoControllerResponse(e.message));
         }
-        res.status(202).send();
+        res.status(httpStatus.CREATED).send();
     }
-
 }

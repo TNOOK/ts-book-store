@@ -3,6 +3,7 @@ import Controller from "./Controller";
 import {BookFinder} from "../../../src/Books/Application/BookFinder";
 import {BookId} from "../../../src/Books/Domain/BookId";
 import {ErrorInfoControllerResponse} from "../../../src/Books/Domain/ErrorInfoControllerResponse";
+import httpStatus from "http-status";
 
 export default class GetBookController implements Controller {
     constructor(private bookFinder: BookFinder) {}
@@ -14,8 +15,8 @@ export default class GetBookController implements Controller {
             id = new BookId(req.params.id);
             data = await this.bookFinder.run(id);
         } catch (e) {
-            res.status(202).json(new ErrorInfoControllerResponse(e.message));
+            res.status(httpStatus.BAD_REQUEST).json(new ErrorInfoControllerResponse(e.message));
         }
-        res.status(202).json(data);
+        res.status(httpStatus.OK).json(data);
     }
 }
