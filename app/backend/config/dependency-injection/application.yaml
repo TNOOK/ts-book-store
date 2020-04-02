@@ -19,6 +19,10 @@ services:
     class: ../../controllers/PostBookController
     arguments: ["@BookStore.BookCreator"]
 
+  BookStore.PutBookController:
+    class: ../../controllers/PutBookController
+    arguments: ["@BookStore.BookCreator"]
+
   BookStore.BookCreator:
     class: ../../../../src/Books/Application/BookCreator
     arguments: ["@BookStore.BookRepository"]

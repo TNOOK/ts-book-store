@@ -5,7 +5,7 @@ import {BookName} from "../Domain/BookName";
 import {BookLength} from "../Domain/BookLength";
 
 export class InMemoryBookRepository implements BookRepository {
-    private readonly books: Book[];
+    private books: Book[];
     constructor() {
         this.books = [
             new Book(new BookId('f8b5cae6-444b-487f-912d-d1e791e0b48f'), BookName.fromString('La biblia'), new BookLength(200)),
@@ -29,12 +29,12 @@ export class InMemoryBookRepository implements BookRepository {
     }
 
     save(book: Book): void {
-        this.books.push(book);
-        console.log('New book added', book);
+        this.books = this.books.filter(b => !b.id.equals(book.id)).concat([book]);
+        console.log(this.books);
     }
 
     remove(id: BookId): void {
-        const indexToRemove: number | undefined = this.books.findIndex(book => book.id.toString() === id.toString());
+        const indexToRemove: number | undefined = this.books.findIndex(book => book.id.equals(id));
         if(indexToRemove !== -1) {
             this.books.splice(indexToRemove, 1);
             console.log('Removed Book');
