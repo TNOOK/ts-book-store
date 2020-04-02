@@ -1,6 +1,8 @@
 import {json, Request, Response} from 'express';
 import Controller from "./Controller";
 import {BooksFinder} from "../../../src/Books/Application/BooksFinder";
+import {ErrorInfoControllerResponse} from "../../../src/Books/Domain/ErrorInfoControllerResponse";
+import httpStatus from "http-status";
 
 export default class GetBooksController implements Controller {
     constructor(private bookFinder: BooksFinder) {}
@@ -11,8 +13,8 @@ export default class GetBooksController implements Controller {
         try {
             books = await this.bookFinder.run();
         } catch (e) {
-            console.log(e);
+            res.status(httpStatus.BAD_REQUEST).json(new ErrorInfoControllerResponse(e.message));
         }
-        res.status(200).json(books);
+        res.status(httpStatus.OK).json(books);
     }
 }

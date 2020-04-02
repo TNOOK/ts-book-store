@@ -2,6 +2,8 @@ import {json, Request, Response} from 'express';
 import Controller from "./Controller";
 import {BookId} from "../../../src/Books/Domain/BookId";
 import {BookRemover} from "../../../src/Books/Application/BookRemover";
+import {ErrorInfoControllerResponse} from "../../../src/Books/Domain/ErrorInfoControllerResponse";
+import httpStatus from "http-status";
 
 export default class DeleteBookController implements Controller {
     constructor(private bookRemover: BookRemover) {}
@@ -11,8 +13,8 @@ export default class DeleteBookController implements Controller {
         try {
             await this.bookRemover.run(id);
         } catch (e) {
-            console.log(e);
+            res.status(httpStatus.BAD_REQUEST).json(new ErrorInfoControllerResponse(e.message));
         }
-        res.status(202).send();
+        res.status(httpStatus.OK).send();
     }
 }
