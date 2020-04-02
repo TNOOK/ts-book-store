@@ -34,7 +34,7 @@ export class InMemoryBookRepository implements BookRepository {
     }
 
     remove(id: BookId): void {
-        const indexToRemove: number | undefined = this.books.findIndex(book => book.id.toString() === id.toString());
+        const indexToRemove: number | undefined = this.books.findIndex(book => book.id.equals(id));
         if(indexToRemove !== -1) {
             this.books.splice(indexToRemove, 1);
             console.log('Removed Book');
