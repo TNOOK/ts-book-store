@@ -5,16 +5,18 @@
   "main": "index.js",
   "scripts": {
     "start": "node dist/app.js",
-    "dev": "ts-node-dev --ignore-watch node_modules --inspect=0.0.0.0:9267 ./app/backend/server.ts",
+    "dev": "ts-node-dev --ignore-watch node_modules --inspect=0.0.0.0:9267 ./app/backend/server.ts && npm frontend",
     "build": "tsc -p .",
-    "test": "jest"
+    "test": "jest",
+    "frontend": "cd app/frontend && npm start",
+    "install-frontend": "cd app/frontend && npm install"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/errorhandler": "^1.5.0",
     "@types/jest": "^25.2.1",
-    "jest": "^25.3.0",
+    "jest": "^24.9.0",
     "ts-jest": "^25.3.1",
     "ts-node": "^8.8.2",
     "typescript": "^3.8.3"
@@ -24,6 +26,7 @@
     "@types/glob": "^7.1.1",
     "@types/uuid": "^7.0.2",
     "@types/uuid-validate": "0.0.1",
+    "babel-jest": "^24.9.0",
     "errorhandler": "^1.5.1",
     "express": "^4.17.1",
     "http-status": "^1.4.2",
