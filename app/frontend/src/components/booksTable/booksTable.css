@@ -1,0 +1,21 @@
+.booksTable {
+    border-collapse: collapse;
+}
+
+.booksTableHeader,
+.book {
+    height: 50px;
+    border-bottom: 1px solid rgba(0,0,0,.12);
+}
+
+.booksTableHeader-element {
+    padding: 0 10px;
+    text-align: inherit;
+}
+.book:hover {
+    background-color: rgba(0,0,0,.12);
+    transition: .2s;
+}
+.book-attr {
+    padding: 0 10px;
+}
