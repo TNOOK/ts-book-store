@@ -1,6 +1,7 @@
 import React from 'react';
 import {BooksTable} from "../booksTable/booksTable";
 import {findBooks} from "../../api/findBooks";
+import {BookCreator} from "../bookCreator/bookCreator";
 import './App.css';
 
 class App extends React.Component<any, { books: any[] }> {
@@ -20,6 +21,7 @@ class App extends React.Component<any, { books: any[] }> {
         return (
             <div className='app'>
                 <BooksTable books={books}/>
+                <BookCreator/>
             </div>
         );
     }

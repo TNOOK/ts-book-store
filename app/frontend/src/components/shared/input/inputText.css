@@ -1,0 +1,45 @@
+.inputText {
+    width: fit-content;
+    position: relative;
+    display: flex;
+    height: 29px;
+}
+
+.inputText-label {
+    align-self: center;
+    margin-left: 10px;
+    color: rgba(0,0,0,.22);
+    position: absolute;
+    transition: .2s;
+    top: 6px;
+}
+
+.inputText.active .inputText-label {
+    top: -8px;
+    background-color: white;
+    z-index: 1;
+    font-size: 12px;
+    color: #006db3;
+}
+
+.inputText-input {
+    position: absolute;
+    left: 0;
+    background-color: transparent;
+    border: 1px solid rgba(0,0,0,.12);
+    border-radius: 4px;
+    height: 29px;
+    outline: none;
+    padding-left: 10px;
+    font-size: 15px;
+    transition: .2s;
+}
+
+.inputText.active .inputText-input {
+    border-color: #006db3;
+}
+
+.inputText-input:hover {
+    border: 1px solid rgba(0,0,0,.32);
+    transition: .2s;
+}
