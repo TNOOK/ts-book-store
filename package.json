@@ -28,7 +28,7 @@
     "@types/uuid-validate": "0.0.1",
     "babel-jest": "^24.9.0",
     "errorhandler": "^1.5.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "http-status": "^1.4.2",
     "node-dependency-injection": "^2.6.3",
     "nodemon": "^2.0.3",
